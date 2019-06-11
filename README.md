@@ -1,4 +1,4 @@
-#README
+# README
 
 This readme is a guideline for any user that wants to use the main Methods in Ruiz-Orera et al. 2019 in NAR Bioinformatics. 
 
