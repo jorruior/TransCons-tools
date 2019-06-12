@@ -1,6 +1,6 @@
 ## README
 
-This readme is a guideline for any user that wants to use the main Methods in Ruiz-Orera et al. 2019 in NAR Bioinformatics. 
+This readme is a guideline for any user that wants to use the main Methods in Ruiz-Orera et al: https://doi.org/10.1101/348326  
 
 
 DEPENDENCIES: 
@@ -17,7 +17,7 @@ DEPENDENCIES:
 
 -**Python packages: Biopython, scipy**
 
-\\
+
 
 1) **getRegions.py**: Extract the conserved and non-conserved regions for every gene in a GTF+FASTA, masking pseudogenes and addying a list of mouse-human orthologs from Ensembl Compara.
 
@@ -36,7 +36,7 @@ python3 getRNP.py --input <TRANSCRIPT/REGIONS PRED> --sam <SAMFILE_PLUS,SAMFILE_
 python3 featureCov.py --input <REGIONS OUTPUT BED> -f <BED FEATURES> -o <OUT NAME> --stranded <yes/no>
 
 
-**Guidelines for reproducibility of methods in Ruiz-Orera et al. 2019:**
+**Guidelines for reproducibility of methods in Ruiz-Orera et al.:**
 
 - The initial mouse transcript dataset corresponds to the annotated version in Ensembl v.89. Repeats were masked using RepeatMasker.
 
