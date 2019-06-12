@@ -81,6 +81,6 @@ python3 getDNDS.py -1 input/candidate_peptides_sp1.fa -2 input/candidate_peptide
 
 *Table 2 contains data for equally sized gene subregions (for Fig 1B)*
 
-*Table 3 contains Ribo-Seq coverage data for regions divided by read length (for Fig 3A)*
+*Table 3 contains Ribo-Seq coverage data for regions divided by read length (for Fig 4A)*
 
 *Table 4 contains data for all considered genes (for Figs 2A,3B)*
