@@ -19,7 +19,7 @@ DEPENDENCIES:
 
 
 
-1) **getRegions.py**: Extract the conserved and non-conserved regions for every gene in a GTF+FASTA, masking pseudogenes and addying a list of mouse-human orthologs from Ensembl Compara.
+1) **getRegions.py**: Extract the conserved and non-conserved regions for every gene in a GTF+FASTA:
 ```
 python3 getRegions.py --gtf <TRANSCRIPT_GTF> --fasta <TRANSCRIPT_FASTA> --db <BLAST_DB> -O <ORTHOLOGS_LIST> -m <PSEUDOGENES_GTF> --out <OUT_NAME> 
 ```
@@ -49,7 +49,7 @@ CDS: CDS coordinates in BED format used as training model and to mask translated
 OUT_NAME: Unique name for output files. They will be generated in the 'out' folder.
 
 
-3) **featureCov.py**: Compute the overlap in the previously computed regions for a specific feature (BED file): RNA-seq and Ribo-seq, promoter, ORF, RNP, or CLIP-seq overlap.
+3) **featureCov.py**: Compute the overlap in the previously computed regions for a specific feature (BED file): RNA-seq and Ribo-seq, promoter, ORF, RNP, or CLIP-seq overlap:
 ```
 python3 featureCov.py --input <REGIONS_OUTPUT_BED> -f <BAM/BED_FEATURES> --stranded <yes/no> --out <OUT_NAME> 
 ```
