@@ -70,7 +70,7 @@ OUT_NAME: Unique name for output files. They will be generated in the 'out' fold
 
 - The final list in Ruiz-Orera et al. was curated by eliminating lncRNA regions that had protein-coding orthologs in mouse (possible unannotated pseudogenes), putative misannotated UTR regions (located within 4kb from a sense protein-coding gene and/or with evidence of being part of the same gene using RNA-Seq data), or regions with a RNA-seq coverage lower than 56.38 reads/kb.
 
-- The full coordinates of translated ORFs can be found in the input folder (mmu89_t_orfs.fa/bed/gtf). getDNDS.py allows to compute dn/ds in a list of ORFs. Both species1 and species2 FASTA are needed (genomic alignment, two fasta files). For the article, the genomic alignments between mouse and human ORFs were used. The alignment of the 9 peptide candidates in lncRNAs can be reproduced:
+- The full coordinates of translated ORFs can be found in the input folder (mmu89_t_orfs.tar). getDNDS.py allows to compute dn/ds on a list of ORFs. Both species1 and species2 FASTA are needed (genomic alignment, two fasta files). For the article, the genomic alignments between mouse and human ORFs were used. The alignment of the 9 peptide candidates in lncRNAs can be reproduced:
 ```
 python3 getDNDS.py -1 input/candidate_peptides_sp1.fa -2 input/candidate_peptides_sp2.fa -o candidates
 ```
