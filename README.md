@@ -42,7 +42,7 @@ python3 featureCov.py --input <REGIONS_OUTPUT_BED> -f <BED_FEATURES> -o <OUT_NAM
 
 - The human transcript dataset used for building the database in BLAST was obtained from: https://figshare.com/articles/Ruiz-Orera_et_al_2017_/4702375
 
-- The final list in Ruiz-Orera et al. was curated by eliminating lncRNA regions that had protein-coding orthologs in mouse (possible unannotated pseudogenes), putative misannotated UTR regions (located within 4kb from a sense protein-coding gene and/or with evidence of being part of the same gene using RNA-Seq data), or regions with a RNA-seq coverage lower than X.
+- The final list in Ruiz-Orera et al. was curated by eliminating lncRNA regions that had protein-coding orthologs in mouse (possible unannotated pseudogenes), putative misannotated UTR regions (located within 4kb from a sense protein-coding gene and/or with evidence of being part of the same gene using RNA-Seq data), or regions with a RNA-seq coverage lower than 56.38 reads/kb.
 
 - The full coordinates of translated ORFs can be found in the input folder (mmu89_t_orfs.fa/bed/gtf). getDNDS.py allows to compute dn/ds in a list of ORFs. Both species1 and species2 FASTA are needed (genomic alignment, two fasta files). For the article, the genomic alignments between mouse and human ORFs were used. The alignment of the 9 peptide candidates in lncRNAs can be reproduced:
 ```
