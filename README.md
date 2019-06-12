@@ -2,21 +2,37 @@
 
 This readme is a guideline for any user that wants to use the main Methods in Ruiz-Orera et al. 2019 in NAR Bioinformatics. 
 
+
 DEPENDENCIES: 
+
 -**BLAST** (v2.3.0)
+
 -**bedtools** (v2.28.0)
+
 -**PAML**
+
 -**prank** (v4)
+
 -**Rfoot** (included in utils)
+
 -**Python packages: Biopython, scipy**
 
+
+
 1) **getRegions.py**: Extract the conserved and non-conserved regions for every gene in a GTF+FASTA, masking pseudogenes and addying a list of mouse-human orthologs from Ensembl Compara.
+
 python3 getRegions.py --gtf <TRANSCRIPT GTF> --fasta <TRANSCRIPT FASTA> --out <OUT NAME> --db <BLAST DB> -O input/mmu_to_hsa_orthologs.txt -m input/mmu_pseudogenes.gtf
 
+
+
 2) **getRNP.py**: Get a list of RNPs and coverage for a list of transcripts or regions:
+
 python3 getRNP.py --input <TRANSCRIPT/REGIONS PRED> --sam <SAMFILE_PLUS,SAMFILE_REV/SAMFILE> --out <OUT NAME> --cds <BED CDS>
 
+
+
 3) **featureCov.py**: Compute the overlap in the previously computed regions for a specific feature (BED file): RNA-seq and Ribo-seq, promoter, ORF, RNP, or CLIP-seq overlap.
+
 python3 featureCov.py --input <REGIONS OUTPUT BED> -f <BED FEATURES> -o <OUT NAME> --stranded <yes/no>
 
 
