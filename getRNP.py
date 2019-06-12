@@ -93,18 +93,18 @@ def floss_coding(orfs, out, bedtools_path):
 		if file.startswith('tmp/n_') and not file.endswith('.bed') and not file.endswith('_orfs') and not file.endswith('_regions'):
 			if not int(file.split("_")[-1]) in reads:
 				reads[int(file.split("_")[-1])] = float(0)
-			# if "plus" in file:
-			# 	os.system('awk \'{print $3"\t"$4"\t"$4+length($10)"\t"$1"\t0\t+"}\' ' + file + '> ' + file.replace("_plus","") + '.bed')
+			if "plus" in file:
+				os.system('awk \'{print $3"\t"$4"\t"$4+length($10)"\t"$1"\t0\t+"}\' ' + file + '> ' + file.replace("_plus","") + '.bed')
 	for file in glob.glob('tmp/*'):
 		if file.startswith('tmp/n_') and not file.endswith('.bed') and not file.endswith('_orfs') and not file.endswith('_regions'):
 			if not int(file.split("_")[-1]) in reads:
 				reads[int(file.split("_")[-1])] = float(0)
-			# if "minus" in file:
-			# 	os.system('awk \'{print $3"\t"$4"\t"$4+length($10)"\t"$1"\t0\t-"}\' ' + file + '>> ' + file.replace("_minus","") + '.bed')
+			if "minus" in file:
+				os.system('awk \'{print $3"\t"$4"\t"$4+length($10)"\t"$1"\t0\t-"}\' ' + file + '>> ' + file.replace("_minus","") + '.bed')
 
-	# for file in glob.glob('tmp/*'):
-	# 	if file.startswith('tmp/n_') and file.endswith('.bed'):
-	# 		os.system(bedtools_path + ' coverage -s -b ' + file + ' -a ' + orfs + ' > ' + file + '_orfs')
+	for file in glob.glob('tmp/*'):
+		if file.startswith('tmp/n_') and file.endswith('.bed'):
+			os.system(bedtools_path + ' coverage -s -b ' + file + ' -a ' + orfs + ' > ' + file + '_orfs')
 
 	for file in glob.glob('tmp/*'):
 		if file.endswith('_orfs'):
@@ -146,10 +146,10 @@ def floss(tp, t, out, bedtools_path, thr2, thr3, lineas, orfs):
 						r[name][n] = 0
 					r[name][n] = r[name][n] + n_reads
 
-	# r = glob.glob('tmp/')
-	# for i in r:
-	# 	if i.startswith(n_):
-	# 		os.remove(i)
+	f = glob.glob('tmp/*')
+	for i in f:
+		if i.startswith('tmp/n_'):
+			os.remove(i)
 
 	out3 = open("out/" + out + "_regions.bed","w+")
 	floss = open("out/" + out + "_regions.floss","w+")
@@ -177,7 +177,7 @@ def floss(tp, t, out, bedtools_path, thr2, thr3, lineas, orfs):
 	out3.close()
 	floss.close()
 
-	os.system(bedtools_path + ' subtract -s -a out/' + out + '_regions.bed -b ' + orfs + ' | sort -k1,1 -k2,2n > out/' + out + '_regions_noorfs.bed')
+	os.system(bedtools_path + ' subtract -s -a out/' + out + '_regions.bed -b ' + orfs + ' | sort -k1,1 -k2,2n | sed "s/\t0\t/\t/" | sed "s/_rn/\t/" > out/' + out + '_regions_noorfs.bed')
 	os.system(bedtools_path + ' merge -d 0 -s -i out/' + out + '_regions_noorfs.bed -c 4,6 -o distinct,distinct | awk \'{print $1\"\t\"$2\"\t\"$3\"\t\"$4\"\t.\t\"$5}\' > out/' + out + '_regions_merged.bed')
 
 
@@ -203,17 +203,22 @@ def main():
 	check_file(opt.sam.split(",")[1])
 	check_file(opt.orfs)
 
-	# run_rfoot(rfoot_script, opt.sam, opt.input, opt.out)
+	if not os.path.exists('out'):
+		os.makedirs('out')
+	if not os.path.exists('tmp'):
+		os.makedirs('tmp')
+
+	run_rfoot(rfoot_script, opt.sam, opt.input, opt.out)
 	lineas = read_rfoot(opt.out, 0.6, 10)
 	
-	# separate_reads(opt.sam)
+	separate_reads(opt.sam)
 	(tp,t) = floss_coding(opt.orfs, opt.out, bedtools_path)
 	floss(tp, t, opt.out, bedtools_path, 10, 0.35, lineas, opt.orfs)
 	
-	# r = glob.glob('tmp/')
-	# for i in r:
-	# 	if i.startswith(out):
-	# 		os.remove(i)
+	f = glob.glob('tmp/*')
+	for i in f:
+		if i.startswith('tmp/' + opt.out):
+			os.remove(i)
 
 if __name__ == '__main__':
 	main()

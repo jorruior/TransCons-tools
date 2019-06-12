@@ -57,6 +57,11 @@ def main():
 	check_file(opt.regions)
 	check_file(opt.feature)
 
+	if not os.path.exists('out'):
+		os.makedirs('out')
+	if not os.path.exists('tmp'):
+		os.makedirs('tmp')
+
 	out2 = open("./tmp/ov.cov","w+")
 	if opt.stra == 'yes':
 		subprocess.call([bedtools_path, 'coverage', '-s', '-split', '-a', opt.regions, '-b', opt.feature], stdout=out2)
@@ -79,6 +84,10 @@ def main():
 		out.write(name + "\t" + opt.out + "\t" + str(regions[name][0]) + "\t" + str(regions[name][1]) + "\t" + str(regions[name][2]) + "\n")
 	out.close()
 
+	# os.remove("./tmp/ov.cov")
+
 
 if __name__ == '__main__':
 	main()
+
+exit(0)

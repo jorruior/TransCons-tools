@@ -55,6 +55,11 @@ def main():
 	check_arg(opt.out,"--out")
 	check_file(opt.fasta1)
 	check_file(opt.fasta2)
+	
+	if not os.path.exists('out'):
+		os.makedirs('out')
+	if not os.path.exists('tmp'):
+		os.makedirs('tmp')
 
 	seqs1 = SeqIO.index(opt.fasta1, "fasta")
 	seqs2 = SeqIO.index(opt.fasta2, "fasta")

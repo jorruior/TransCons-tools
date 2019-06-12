@@ -467,10 +467,15 @@ def main():
 	check_file(opt.fasta)
 	check_file(opt.gtf)
 
+	if not os.path.exists('out'):
+		os.makedirs('out')
+	if not os.path.exists('tmp'):
+		os.makedirs('tmp')
+
 	seqs = SeqIO.index(opt.fasta, "fasta") #BLAST 2.3.0
 	exc = exclude(seqs)
 
-	#run_blast(opt.fasta,opt.db,blast_path,'1',opt.out)
+	run_blast(opt.fasta,opt.db,blast_path,'1',opt.out)
 
 	print('Parsing')
 	regions = parse_blast("tmp/blast_" + opt.out + ".xml", exc)
@@ -488,7 +493,7 @@ def main():
 
 	r = glob.glob('tmp/*')
 	for i in r:
-		if i.startswith(out):
+		if i.startswith('tmp/' + opt.out):
 			os.remove(i)
 
 if __name__ == '__main__':
