@@ -5,15 +5,15 @@ This readme is a guideline for any user that wants to use the main Methods in Ru
 
 DEPENDENCIES: 
 
--**BLAST** (v2.3.0)
+-**BLAST** (v2.3.0) ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/
 
--**bedtools** (v2.28.0)
+-**bedtools** (v2.28.0) https://github.com/arq5x/bedtools2
 
--**PAML**
+-**PAML** (v1.3.1) http://abacus.gene.ucl.ac.uk/software/paml.html
 
--**prank** (v4)
+-**prank** (v4) http://wasabiapp.org/software/prank/
 
--**Rfoot** (included in utils)
+-**Rfoot** (v1.0) https://github.com/zhejilab/Rfoot
 
 -**Python packages: Biopython, scipy**
 
