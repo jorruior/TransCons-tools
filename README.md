@@ -21,19 +21,19 @@ DEPENDENCIES:
 
 1) **getRegions.py**: Extract the conserved and non-conserved regions for every gene in a GTF+FASTA, masking pseudogenes and addying a list of mouse-human orthologs from Ensembl Compara.
 ```
-python3 getRegions.py --gtf <TRANSCRIPT GTF> --fasta <TRANSCRIPT FASTA> --out <OUT NAME> --db <BLAST DB> -O input/mmu_to_hsa_orthologs.txt -m input/mmu_pseudogenes.gtf
+python3 getRegions.py --gtf <TRANSCRIPT_GTF> --fasta <TRANSCRIPT_FASTA> --out <OUT_NAME> --db <BLAST_DB> -O <ORTHOLOGS_LIST> -m <PSEUDOGENES_GTF>
 ```
 
 
 2) **getRNP.py**: Get a list of RNPs and coverage for a list of transcripts or regions:
 ```
-python3 getRNP.py --input <TRANSCRIPT/REGIONS PRED> --sam <SAMFILE_PLUS,SAMFILE_REV/SAMFILE> --out <OUT NAME> --cds <BED CDS>
+python3 getRNP.py --input <TRANSCRIPT_PRED> --sam <SAMFILE_PLUS,SAMFILE_REV/SAMFILE> --out <OUT_NAME> --cds <BED_CDS>
 ```
 
 
 3) **featureCov.py**: Compute the overlap in the previously computed regions for a specific feature (BED file): RNA-seq and Ribo-seq, promoter, ORF, RNP, or CLIP-seq overlap.
 ```
-python3 featureCov.py --input <REGIONS OUTPUT BED> -f <BED FEATURES> -o <OUT NAME> --stranded <yes/no>
+python3 featureCov.py --input <REGIONS_OUTPUT_BED> -f <BED_FEATURES> -o <OUT_NAME> --stranded <yes/no>
 ```
 
 **Guidelines for reproducibility of methods in Ruiz-Orera et al.:**
