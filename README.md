@@ -19,7 +19,7 @@ DEPENDENCIES:
 
 
 
-1) **getRegions.py**: Extract the conserved and non-conserved regions for every gene in a GTF+FASTA:
+1) **getRegions.py**: Extract collapsed conserved and non-conserved regions for every gene from a set of transcripts:
 ```
 python3 getRegions.py --gtf <TRANSCRIPT_GTF> --fasta <TRANSCRIPT_FASTA> --db <BLAST_DB> -O <ORTHOLOGS_LIST> -m <PSEUDOGENES_GTF> --out <OUT_NAME> 
 ```
@@ -36,7 +36,7 @@ PSEUDOGENES_GTF (optional): GTF with genes that are known pseudogenes and should
 OUT_NAME: Unique name for output files. They will be generated in the 'out' folder.
 
 
-2) **getRNP.py**: Get a list of RNPs and coverage for a list of transcripts or regions:
+2) **getRNP.py**: Get a list of RNPs for a list of transcripts or regions:
 ```
 python3 getRNP.py --input <TRANSCRIPT_PRED> --sam <SAMFILE_PLUS,SAMFILE_REV/SAMFILE> --cds <BED_CDS> --out <OUT_NAME>
 ```
